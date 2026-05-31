@@ -13,7 +13,7 @@ tasa_aprend  = 0.001
 clases       = [
     'battery', 'biological', 'brown-glass', 'cardboard',
     'clothes', 'green-glass', 'metal', 'paper',
-    'plastic', 'shoes', 'trash', 'white-glass'
+    'plastic', 'shoes', 'trash', 'unknown', 'white-glass'
 ]
 
 print(f'Dispositivo: {dispositivo}')
