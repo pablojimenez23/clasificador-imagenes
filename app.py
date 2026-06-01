@@ -8,7 +8,7 @@ import os
 clases = [
     'battery', 'biological', 'brown-glass', 'cardboard',
     'clothes', 'green-glass', 'metal', 'paper',
-    'plastic', 'shoes', 'trash', 'white-glass'
+    'plastic', 'shoes', 'trash', 'unknown', 'white-glass'
 ]
 
 def cargar_modelo():
