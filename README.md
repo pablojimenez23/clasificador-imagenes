@@ -48,7 +48,7 @@ white-glass: Vidrio blanco
 
 ## Ejemplos de uso
 
-Comando: `python app.py data/val/plastic/plastic10.jpg`
+Comando: 'python app.py data/val/plastic/plastic10.jpg'
 
 Imagen:        data/val/plastic/plastic10.jpg
 Clasificacion: PLASTIC
@@ -86,7 +86,7 @@ Ingrese a la carpeta con: 'cd clasificador-imagenes'
 
 Instale las dependencias con: 'pip install -r requirements.txt'
 
-Configura su token de Kaggle en: '~/.kaggle/kaggle.json':
+Configure su token de Kaggle en: '~/.kaggle/kaggle.json':
 
 {
   "username": "tu_usuario_kaggle",
@@ -111,7 +111,6 @@ Clasifique una imagen con: 'python app.py ruta/imagen.jpg'
 
 Python 3.12 — PyTorch 2.0 — TorchVision — ResNet-18 — Matplotlib — Pillow — Kaggle — Google Colab
 
-
 ## Proximas mejoras
 
 Autenticacion con JWT en la API
@@ -124,7 +123,6 @@ Aplicacion movil con React Native
 
 Haga fork del repositorio, crea una rama con: 'git checkout -b feature/nombre-mejora', realize sus cambios y abra un Pull Request describiendo lo que realizo.
 
----
 
 ## Autor
 
