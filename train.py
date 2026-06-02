@@ -7,9 +7,9 @@ import os
 
 # Configuracion general del entrenamiento
 dispositivo  = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-epocas       = 10
+epocas       = 15
 tam_lote     = 32
-tasa_aprend  = 0.001
+tasa_aprend  = 0.0005
 clases       = [
     'battery', 'biological', 'brown-glass', 'cardboard',
     'clothes', 'green-glass', 'metal', 'paper',
@@ -56,14 +56,22 @@ modelo = models.resnet18(weights=models.ResNet18_Weights.IMAGENET1K_V1)
 for parametro in modelo.parameters():
     parametro.requires_grad = False
 
+# Se descongelan las ultimas 2 capas para que el modelo aprenda
+# caracteristicas mas especificas para residuos
+for parametro in modelo.layer4.parameters():
+    parametro.requires_grad = True
+
 # Se reemplaza la ultima capa para adaptarla a las clases del proyecto
 num_caracteristicas = modelo.fc.in_features
 modelo.fc = nn.Linear(num_caracteristicas, len(clases))
 modelo     = modelo.to(dispositivo)
 
-# Funcion de perdida y optimizador aplicados solo a la ultima capa
+# Funcion de perdida y optimizador aplicados a layer4 y la ultima capa
 criterio    = nn.CrossEntropyLoss()
-optimizador = optim.Adam(modelo.fc.parameters(), lr=tasa_aprend)
+optimizador = optim.Adam(
+    filter(lambda p: p.requires_grad, modelo.parameters()),
+    lr=tasa_aprend
+)
 
 # Reductor de tasa de aprendizaje si el modelo deja de mejorar
 planificador = optim.lr_scheduler.ReduceLROnPlateau(
